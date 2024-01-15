@@ -50,17 +50,6 @@ Utilizador.FindById = (id, result) => {
     });
 };
 
-//Model Procurar Nome Utilizador Consoante ID
-Utilizador.getNomeById = (id, callback) => {
-    sql.query('SELECT username FROM utilizadores WHERE ID=?', [id], (error, res) => {
-        if (typeof callback === 'function') {
-            callback(error, res && res.length > 0 ? res[0].nome : null);
-        } else {
-            console.error("Callback não é uma função.");
-        }
-    });
-};
-
 //Model Criar Utilizador
 Utilizador.create = (novoUtilizador, result) => {
     sql.query('INSERT INTO utilizadores SET ?', novoUtilizador, (error,res) => {

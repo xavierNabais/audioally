@@ -14,8 +14,8 @@ exports.findAll = (req, res) => {
             error.message || "Ocorreu um erro ao tentar aceder aos dados das marcações"
         });
         
-        
-        else res.render(path.resolve('views/pages/marcacoes/index.ejs'), { dados });   
+        else 
+        res.render(path.resolve('views/pages/marcacoes/index.ejs'), { dados });   
 
     });
 };

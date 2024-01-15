@@ -46,6 +46,22 @@ Servico.FindById = (id, result) => {
     });
 };
 
+//Model Procurar Nome Serviço Consoante ID
+Servico.getNomeById = (id, callback) => {
+    sql.query('SELECT nome FROM servicos WHERE ID=?', [id], (error, res) => {
+        if (typeof callback !== 'function') {
+            console.error("Callback não é uma função.");
+            return;
+        }
+        if (error) {
+            callback(error, null);
+        } else {
+            const nome = res && res.length > 0 ? res[0].username : null;
+            callback(null, nome);
+        }
+    });
+};
+
 //Model Criar Serviço
 Servico.create = (novoServico, result) => {
     sql.query('INSERT INTO servicos SET ?', novoServico, (error,res) => {

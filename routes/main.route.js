@@ -17,6 +17,11 @@
         res.render(path.resolve('views/pages/register.ejs'));  
     });
 
+    //Rota Visualização Página Registo Frontend
+    router.get("/cliente/marcacoes/:id", async function(req,res){
+        res.render(path.resolve('views/pages/clientes/list.ejs'));  
+    });
+
     //Rota Sucesso Marcação Cliente Frontend
     router.get("/cliente/sucesso/:id", async function(req,res){
         const utilizador = req.params.id;
