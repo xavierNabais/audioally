@@ -1,0 +1,22 @@
+{
+  "name": "audioally",
+  "version": "1.0.0",
+  "description": "projeto final audio ally",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "ISMT"
+  ],
+  "author": "Goncalo Fernandes",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.7.0",
+    "router": "^1.3.8"
+  }
+}

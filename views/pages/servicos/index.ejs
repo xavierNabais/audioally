@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+ <head>
+  <meta charset="utf-8">
+  <title>AudioAlly</title>
+  <%- include('../../partials/header');-%>
+  </head>
+  <body>
+
+
+  </body>
+
+  <div class="wrapper">
+
+
+    <%- include('../../partials/nav');-%>
+
+
+    <div class="container">
+        <h4>Lista de Serviços</h4>
+        <div class="row col-md-6 col-md-offset-2 custyle" style="margin-bottom:5%">
+            <a href="/servicos/novo" class="btn btn-primary btn-xs"><b>+</b> Adicionar novo serviço</a>
+        </div>
+<div class=" col-md-6 col-md-offset-2 custyle">
+
+
+
+<form action="/" method="POST">
+    <div style="overflow-x:auto;">
+
+    <table class="table" style="text-align: center;display:block">
+    <thead>
+        <tr>
+            <th style="width: 60%;">Nome</th>
+            <th >Ativo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <% dados.forEach((dados) => { %>
+
+            <tr>
+                <td><%= dados.nome%></td>
+                <td><%= dados.ativo%></td>
+                <td class="text-center" style="width:100%"><a class='btn btn-info btn-xs' href="/servicos/<%= dados.id %>/update"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/servicos/<%= dados.id %>/apagar" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+            </tr>
+            <% }); %>
+
+    </table>
+    </div>
+</form>
+</div>
+</div>
+
+
+<%- include('../../partials/footer');-%>
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+     $(".menu-icon").on("click", function() {
+           $("nav ul").toggleClass("showing");
+     });
+});
+
+// Scrolling Effect
+
+$(window).on("scroll", function() {
+     if($(window).scrollTop()) {
+           $('nav').addClass('black');
+     }
+
+     else {
+           $('nav').removeClass('black');
+     }
+})
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+
+</body>
+
+</html>

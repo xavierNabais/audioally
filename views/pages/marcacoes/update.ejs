@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+ <head>
+  <meta charset="utf-8">
+  <title>AudioAlly</title>
+  <%- include('../../partials/header');-%>
+  </head>
+  <body>
+
+
+  </body>
+
+  <div class="wrapper">
+
+
+    <%- include('../../partials/nav');-%>
+
+
+    <div class="container">
+        <h4>Atualizar Marcação</h4>
+        <hr>
+        <div class="row col-md-6 col-md-offset-2 custyle">
+    <form method="POST" name="criarMarcacao" id="criarMarcacao">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input type="number" class="form-control" name="id" value="<%= dados[0].id %>" readonly>
+          </div> 
+
+            <label for="exampleInputPassword1">Utilizador</label>
+            <div class="form-group">
+              <select class="custom-select" name="utilizador" id="utilizador" form="criarMarcacao" required>
+                <option value="Escolha um utilizador" disabled selected>Escolha um utilizador:</option>
+                <% utilizador.forEach((utilizador) => { %>
+                    <option value="<%= utilizador.id %>" name="utilizador"><%= utilizador.nome %></option>
+                <% }); %>
+              </select>
+            </div>
+
+            <label for="exampleInputPassword1">Produtor</label>
+            <div class="form-group">
+              <select class="custom-select" name="produtor" id="produtor" form="criarMarcacao" required>
+                <option value="Escolha um produtor" disabled selected>Escolha um produtor:</option>
+                <% servico.forEach((servico) => { %>
+                    <option value="<%= servico.id %>" name="servico"><%= servico.nome %></option>
+                <% }); %>
+              </select>
+            </div>
+
+            <label for="exampleInputPassword1">Serviço</label>
+            <div class="form-group">
+              <select class="custom-select" name="servico" id="servico" form="criarMarcacao" required>
+                <option value="Escolha um servico" disabled selected>Escolha um serviço:</option>
+                <% servico.forEach((servico) => { %>
+                    <option value="<%= servico.id %>" name="servico"><%= servico.nome %></option>
+                <% }); %>
+              </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Bpms</label>
+                <input type="text" class="form-control" placeholder="Insira o link" name="bpms" min="80" max="120" value="<%= dados[0].bpms %>" required>
+              </div> 
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Música</label>
+                <input type="text" class="form-control" placeholder="Insira o link" maxlength="36" value="<%= dados[0].musica %>" name="musica"  required>
+              </div> 
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Link</label>
+                <input type="text" class="form-control" placeholder="Insira o link" maxlength="48" name="link" value="<%= dados[0].link %>"   pattern="https?://.+" title="Inclua https://" required>
+              </div> 
+            <button type="submit" class="btn btn-primary">Criar</button>
+
+        </form>
+</div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+     $(".menu-icon").on("click", function() {
+           $("nav ul").toggleClass("showing");
+     });
+});
+
+// Scrolling Effect
+
+$(window).on("scroll", function() {
+     if($(window).scrollTop()) {
+           $('nav').addClass('black');
+     }
+
+     else {
+           $('nav').removeClass('black');
+     }
+})
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+
+</body>
+
+</html>
