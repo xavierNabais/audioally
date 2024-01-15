@@ -7,4 +7,4 @@ The website follows a simple folder structure, following the Model-View-Controll
 Comprehensive documentation has been created for the backend operations, detailing the available endpoints, supported operations, and other relevant information. This documentation aims to facilitate seamless integration and usage of the backend by other developers, providing a clear understanding of the available functionality and endpoints for interaction.
 
 I hope this revised description accurately captures the essence of your Node.js project. If you have any further adjustments or need additional information, feel free to let me know!
-![image](https://github.com/xavierNabais/audioally/assets/137562900/76578d1c-7ca7-433c-be3c-351de1579b14)
+![Screenshot_2](https://github.com/xavierNabais/audioally/assets/137562900/8774bc2d-f7cb-4a7d-a5c9-216390e448ce)
