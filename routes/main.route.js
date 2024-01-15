@@ -4,6 +4,7 @@
     const loginController = require("../controller/login.controller");
     const registoController = require("../controller/registo.controller");
     const clienteController = require("../controller/cliente.controller");
+    const MarcacoesController = require("../controller/marcacoes.controller");
 
 
 
@@ -17,10 +18,8 @@
         res.render(path.resolve('views/pages/register.ejs'));  
     });
 
-    //Rota Visualização Página Registo Frontend
-    router.get("/cliente/marcacoes/:id", async function(req,res){
-        res.render(path.resolve('views/pages/clientes/list.ejs'));  
-    });
+    //Rota Visualização Marcações Frontend
+    router.get("/cliente/marcacoes/:id", clienteController.getMarcacoesOfClient);
 
     //Rota Sucesso Marcação Cliente Frontend
     router.get("/cliente/sucesso/:id", async function(req,res){
@@ -29,7 +28,7 @@
     });
 
     //Rota Formulário Marcação Cliente Frontend
-    router.get("/cliente/formulario/:id", clienteController.findAll);
+    router.get("/cliente/formulario/:id", clienteController.getMarcacoesOfClient);
 
     //Rota Verificação Login Cliente Backend
     router.post("/", loginController.getUser);

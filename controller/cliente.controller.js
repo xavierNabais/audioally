@@ -25,8 +25,24 @@ exports.findAll = (req, res) => {
                     });
                 }
             });
-        }
+}
 
+//Controller Procurar Produtores e Serviços Disponíveis
+exports.getMarcacoesOfClient = (req, res) => {
+    const id = req.params.id;
+
+    // Chame o método getAll do modelo Cliente para obter as marcações do cliente
+    ClienteModel.getAll(id, (error, dados) => {
+        if (error) {
+            res.status(500).send({
+                message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos clientes"
+            });
+        } else {
+            // Renderize a visualização com os dados obtidos
+            res.render(path.resolve('views/pages/clientes/list.ejs'), { dados });
+        }
+    });
+}
 
 //Controller Criação Nova Marcação Cliente
 exports.create = (req, res) => {

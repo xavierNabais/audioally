@@ -17,61 +17,62 @@ Marcacoes.getAll = result => {
         if (error) {
             console.log("error: ", error);
             result(null, error);
-            return;
         }
         else {
-            const marcacoesComNomes = [];
-            const totalMarcacoes = res.length;
-            let marcacoesProcessadas = 0;
+                if (res.length === 0){
+                    result(null,res);
+                }else{
+                    const marcacoesComNomes = [];
+                    const totalMarcacoes = res.length;
+                    let marcacoesProcessadas = 0;
 
-            res.forEach(marcacao => {
-                // Consulta para buscar o nome do utilizador
-                sql.query('SELECT nome FROM utilizadores WHERE id=?', [marcacao.id_utilizador], (err, utilizador) => {
-                    if (err) {
-                        console.log("error: ", err);
-                        result(null, err);
-                        return;
-                    }
-                    const nomeUtilizador = utilizador && utilizador.length > 0 ? utilizador[0].nome : 'Nome não encontrado';
-
-                    // Consulta para buscar o nome do produtor
-                    sql.query('SELECT nome FROM produtores WHERE id=?', [marcacao.id_produtor], (err, produtor) => {
-                        if (err) {
-                            console.log("error: ", err);
-                            result(null, err);
-                            return;
-                        }
-                        const nomeProdutor = produtor[0].nome;
-                        // Consulta para buscar o nome do serviço
-                        sql.query('SELECT nome FROM servicos WHERE id=?', [marcacao.id_servico], (err, servico) => {
+                    res.forEach(marcacao => {
+                        // Consulta para buscar o nome do utilizador
+                        sql.query('SELECT nome FROM utilizadores WHERE id=?', [marcacao.id_utilizador], (err, utilizador) => {
                             if (err) {
-                                console.log("error: ", err);
-                                result(null, err);
-                                return;
+                                console.log("error: ", error);
+                                result(null, error);
                             }
-                            const nomeServico = servico[0].nome;
-                            const marcacaoComNomes = {
-                                id: marcacao.id,
-                                id_utilizador: nomeUtilizador,
-                                id_produtor: nomeProdutor,
-                                id_servico: nomeServico,
-                                bpms: marcacao.bpms,
-                                musica: marcacao.musica,
-                                link: marcacao.link
-                            };
-                            marcacoesComNomes.push(marcacaoComNomes);
-                            marcacoesProcessadas++;
+                            const nomeUtilizador = utilizador && utilizador.length > 0 ? utilizador[0].nome : 'Nome não encontrado';
 
-                            if (marcacoesProcessadas === totalMarcacoes) {
-                                result(null, marcacoesComNomes);
-                            }
+                            // Consulta para buscar o nome do produtor
+                            sql.query('SELECT nome FROM produtores WHERE id=?', [marcacao.id_produtor], (err, produtor) => {
+                                if (err) {
+                                    console.log("error: ", error);
+                                    result(null, error);
+                                }
+                                const nomeProdutor = produtor[0].nome;
+                                // Consulta para buscar o nome do serviço
+                                sql.query('SELECT nome FROM servicos WHERE id=?', [marcacao.id_servico], (err, servico) => {
+                                    if (err) {
+                                        console.log("error: ", error);
+                                        result(null, error);
+                                    }
+                                    const nomeServico = servico[0].nome;
+                                    const marcacaoComNomes = {
+                                        id: marcacao.id,
+                                        id_utilizador: nomeUtilizador,
+                                        id_produtor: nomeProdutor,
+                                        id_servico: nomeServico,
+                                        bpms: marcacao.bpms,
+                                        musica: marcacao.musica,
+                                        link: marcacao.link
+                                    };
+                                    marcacoesComNomes.push(marcacaoComNomes);
+                                    marcacoesProcessadas++;
+
+                                    if (marcacoesProcessadas === totalMarcacoes) {
+                                        result(null, marcacoesComNomes);
+                                    }
+                                });
+                            });
                         });
                     });
-                });
-            });
+                }
         }
     });
 };
+
 
 //Model Procurar ID Marcação
 Marcacoes.FindById = (id, result) => {

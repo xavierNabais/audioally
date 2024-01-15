@@ -13,12 +13,13 @@ exports.findAll = (req, res) => {
             message:
             error.message || "Ocorreu um erro ao tentar aceder aos dados das marcações"
         });
-        
-        else 
+        else    
         res.render(path.resolve('views/pages/marcacoes/index.ejs'), { dados });   
 
     });
 };
+
+
 
 //Controller Procurar Produtores e Serviços Disponíveis
 exports.getActive = (req, res) => {
