@@ -18,7 +18,7 @@
         res.render(path.resolve('views/pages/register.ejs'));  
     });
 
-    //Rota Visualização Marcações Frontend
+    //Rota Visualização Marcações Cliente Frontend
     router.get("/cliente/marcacoes/:id", clienteController.getMarcacoesOfClient);
 
     //Rota Sucesso Marcação Cliente Frontend
@@ -28,7 +28,7 @@
     });
 
     //Rota Formulário Marcação Cliente Frontend
-    router.get("/cliente/formulario/:id", clienteController.getMarcacoesOfClient);
+    router.get("/cliente/formulario/:id", clienteController.findAll);
 
     //Rota Verificação Login Cliente Backend
     router.post("/", loginController.getUser);
@@ -38,5 +38,9 @@
 
     //Rota Criação Marcação Cliente Backend
     router.post("/cliente/formulario/:id", clienteController.create);
+
+    //Rota Eliminação Marcação Cliente Backend
+    router.get("/cliente/marcacoes/:id/apagar", clienteController.remove);
+
 
 module.exports = router;

@@ -33,45 +33,49 @@ Cliente.getAll = (id, result) => {
             return;
         }
         else {
-            const marcacoesComNomes = [];
-            const totalMarcacoes = res.length;
-            let marcacoesProcessadas = 0;
+            if (res.length === 0){
+                result(null,res);
+            }else{
+                const marcacoesComNomes = [];
+                const totalMarcacoes = res.length;
+                let marcacoesProcessadas = 0;
 
-            res.forEach(marcacao => {
-                    // Consulta para buscar o nome do produtor
-                    sql.query('SELECT nome FROM produtores WHERE id=?', [marcacao.id_produtor], (err, produtor) => {
-                        if (err) {
-                            console.log("error: ", err);
-                            result(null, err);
-                            return;
-                        }
-                        const nomeProdutor = produtor[0].nome;
-                        // Consulta para buscar o nome do serviço
-                        sql.query('SELECT nome FROM servicos WHERE id=?', [marcacao.id_servico], (err, servico) => {
+                res.forEach(marcacao => {
+                        // Consulta para buscar o nome do produtor
+                        sql.query('SELECT nome FROM produtores WHERE id=?', [marcacao.id_produtor], (err, produtor) => {
                             if (err) {
                                 console.log("error: ", err);
                                 result(null, err);
                                 return;
                             }
-                            const nomeServico = servico[0].nome;
-                            const marcacaoComNomes = {
-                                id: marcacao.id,
-                                id_produtor: nomeProdutor,
-                                id_servico: nomeServico,
-                                bpms: marcacao.bpms,
-                                musica: marcacao.musica,
-                                link: marcacao.link
-                            };
-                            marcacoesComNomes.push(marcacaoComNomes);
-                            marcacoesProcessadas++;
+                            const nomeProdutor = produtor[0].nome;
+                            // Consulta para buscar o nome do serviço
+                            sql.query('SELECT nome FROM servicos WHERE id=?', [marcacao.id_servico], (err, servico) => {
+                                if (err) {
+                                    console.log("error: ", err);
+                                    result(null, err);
+                                    return;
+                                }
+                                const nomeServico = servico[0].nome;
+                                const marcacaoComNomes = {
+                                    id: marcacao.id,
+                                    id_produtor: nomeProdutor,
+                                    id_servico: nomeServico,
+                                    bpms: marcacao.bpms,
+                                    musica: marcacao.musica,
+                                    link: marcacao.link
+                                };
+                                marcacoesComNomes.push(marcacaoComNomes);
+                                marcacoesProcessadas++;
 
-                            if (marcacoesProcessadas === totalMarcacoes) {
-                                result(null, marcacoesComNomes);
-                            }
+                                if (marcacoesProcessadas === totalMarcacoes) {
+                                    result(null, marcacoesComNomes);
+                                }
+                            });
                         });
-                    });
 
-            });
+                });
+            }
         }
     });
 };

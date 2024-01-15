@@ -13,13 +13,12 @@
   <div class="wrapper">
 
 
-    <%- include('../../partials/nav');-%>
 
 
-    <div class="container">
+    <div class="container" style="margin-top: 5%;">
         <h4>Lista de Marcações</h4>
         <div class="row col-md-6 col-md-offset-2 custyle" style="margin-bottom:5%">
-            <a href="/marcacoes/novo" class="btn btn-primary btn-xs"><b>+</b> Adicionar nova marcação</a>
+            <a href="/cliente/formulario/<%=id%>" class="btn btn-primary btn-xs"><b>+</b> Adicionar nova marcação</a>
         </div><div class="col-md-6 col-md-offset-2 custyle">
 
 
@@ -45,7 +44,7 @@
                 <td><%= dados.bpms%></td>
                 <td><%= dados.musica%></td>
                 <td><%= dados.link%></td>
-                <td class="text-center" style="width:100%"><a class='btn btn-info btn-xs' href="/marcacoes/<%= dados.id %>/update"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/marcacoes/<%= dados.id %>/apagar" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                <td class="text-center" style="width:100%"><a href="/cliente/marcacoes/<%= dados.id %>/apagar" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
             </tr>
             <% }); %>
     </table>

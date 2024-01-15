@@ -1,5 +1,5 @@
 const ProdutorModel = require("../model/produtor.model");
-const UtilizadorModel = require("../model/utilizador.model");
+const MarcacoesModel = require("../model/marcacoes.model");
 const ServicoModel = require("../model/servico.model");
 const ClienteModel = require("../model/cliente.model");
 
@@ -39,7 +39,7 @@ exports.getMarcacoesOfClient = (req, res) => {
             });
         } else {
             // Renderize a visualização com os dados obtidos
-            res.render(path.resolve('views/pages/clientes/list.ejs'), { dados });
+            res.render(path.resolve('views/pages/clientes/list.ejs'), { dados,id });
         }
     });
 }
@@ -68,4 +68,18 @@ exports.create = (req, res) => {
                 });
                 else res.redirect('/cliente/sucesso/' + req.params.id);
             });
+};
+
+//Controller Eliminar Marcação
+exports.remove = (req, res) => {
+    const id = req.params.id; 
+    MarcacoesModel.remove(id, (error, dados) => {
+        if (error)
+        res.status(500).send({
+            message:
+            error.message || "Ocorreu um erro ao tentar eliminar os dados de uma marcação"
+        });
+        else res.redirect('/cliente/marcacoes/'+id);
+
+    });
 };
