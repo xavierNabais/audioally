@@ -39,14 +39,20 @@ Utilizador.getAll = result => {
 
 //Model Procurar ID Utilizador
 Utilizador.FindById = (id, result) => {
-    sql.query('SELECT * FROM utilizadores WHERE ID=?', [id], (error,res) => {
+    sql.query('SELECT * FROM utilizadores WHERE ID=?', [id], (error, res) => {
         if (error) {
             console.log("error: ", error);
-            result(null, error);
+            result(error, null);
             return;
         }
-
-        result(null,res);
+        
+        if (res.length > 0) {
+            // Manipule os dados conforme necessário
+            res[0].data = new Date(res[0].data).toLocaleDateString('pt-PT');
+            result(null, res); // Envie a resposta alterada
+        } else {
+            result("Utilizador não encontrado", null);
+        }
     });
 };
 
