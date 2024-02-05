@@ -29,19 +29,34 @@ exports.create = (req, res) => {
     });
     RegistoModel.create(novoRegisto, (error, data) => {
         if (error)
-        res.status(500).send({
-            message:
-            error.message || "Ocorreu um erro ao tentar criar um utilizador."
-        });
-        else RegistoModel.FindByUsername(req.body.username, (error, dados) => {
-             if (error)
-             res.status(500).send({
+            if (error === 1){
+            res.status(500).send({
                 message:
-                error.message || "Ocorreu um erro ao tentar criar um utilizador."
-             });
-             else 
-             res.redirect('/cliente/formulario/'+data.insertId); 
-        
-        });
+                error.message || "Username existente!"
+            });            
+            } else if(error === 2) {
+                res.status(500).send({
+                    message:
+                    error.message || "Email existente!"
+                });                     
+            }
+            else {
+                res.status(500).send({
+                    message:
+                    error.message || "Ocorreu um erro ao tentar criar um utilizador."
+                });
+            }
+            
+        else
+                RegistoModel.FindByUsername(req.body.username, (error, dados) => {
+                    if (error)
+                    res.status(500).send({
+                        message:
+                        error.message || "Ocorreu um erro ao tentar criar um utilizador."
+                    });
+                    else 
+                    res.redirect('/cliente/formulario/'+data.insertId); 
+                
+                });
     });
 };

@@ -14,15 +14,45 @@ const novoRegisto = function (data) {
 
 //Model Criar Cliente
 novoRegisto.create = (novoRegisto, result) => {
-    sql.query('INSERT INTO utilizadores SET ?', novoRegisto, (error,res) => {
+
+    //Verificações Cliente Existente (Username)
+    sql.query('SELECT * FROM utilizadores WHERE username=?', [novoRegisto.username], (error,res) => {
         if (error) {
             console.log("error: ", error);
             result(null, error);
             return;
         }
-
-        console.log("Cliente criado com sucesso!");
-        result(null,res);
+        // Se existir Username
+        if (res.length >= 1){
+            error=1;
+            result(error);
+        } else {
+            //Verificações Cliente Existente (Email)
+            sql.query('SELECT * FROM utilizadores WHERE email=?', [novoRegisto.email], (error,res) => {
+                
+                if (error) {
+                    console.log("error: ", error);
+                    result(null, error);
+                    return;
+                }
+                // Se existir Email
+                if (res.length >= 1){
+                    error=2;
+                    result(error);
+                }else {
+                    sql.query('INSERT INTO utilizadores SET ?', novoRegisto, (error,res) => {
+                        if (error) {
+                            console.log("error: ", error);
+                            result(null, error);
+                            return;
+                        }
+                
+                        console.log("Cliente criado com sucesso!");
+                        result(null,res);
+                    });
+                };
+            });
+        };
     });
 };
 
