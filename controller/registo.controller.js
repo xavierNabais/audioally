@@ -29,17 +29,20 @@ exports.create = (req, res) => {
     });
     RegistoModel.create(novoRegisto, (error, data) => {
         if (error)
+        //1 = Username existente
             if (error === 1){
             res.status(500).send({
                 message:
                 error.message || "Username existente!"
-            });            
+            });          
+            //2 = Email existente
             } else if(error === 2) {
                 res.status(500).send({
                     message:
                     error.message || "Email existente!"
                 });                     
             }
+            //Query error
             else {
                 res.status(500).send({
                     message:
@@ -47,7 +50,7 @@ exports.create = (req, res) => {
                 });
             }
             
-        else
+                else
                 RegistoModel.FindByUsername(req.body.username, (error, dados) => {
                     if (error)
                     res.status(500).send({
@@ -58,5 +61,5 @@ exports.create = (req, res) => {
                     res.redirect('/cliente/formulario/'+data.insertId); 
                 
                 });
-    });
+        });
 };
