@@ -37,7 +37,7 @@
                         <form action="" name="registration" method="POST">
                            <!-- nome completo -->
                              <div class="form-group input-group">
-                               <input name="nome" class="form-control" placeholder="Nome Completo" type="text" name="nome" required>
+                               <input name="nome" class="form-control" placeholder="Nome Completo" type="text" name="nome" maxlength="64" required>
                              </div>
 
                              <!-- username -->
@@ -46,12 +46,12 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">@</div>
                                 </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" name="username" required>
+                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="32" name="username" required>
                               </div>
 
                              <!-- email -->
                              <div class="form-group input-group">
-                               <input name="email" class="form-control" placeholder="E-mail" type="email" required>
+                               <input name="email" class="form-control" placeholder="E-mail" type="email" maxlength="100" required>
                              </div>
 
                              <!-- dta nascimento-->
@@ -76,7 +76,7 @@
 
                              <!-- password -->
                              <div class="form-group input-group">
-                               <input class="form-control" placeholder="Nova password" type="password" name="password" required>
+                               <input class="form-control" placeholder="Nova password" type="password" maxlength="64" name="password" required>
                              </div>
 
                              <!-- termos de uso -->
