@@ -8,6 +8,15 @@ var path = require('path');
 exports.getUser = (req, res) => {
     LoginModel.findUser(req, (error, dados) => {
         if (error) {
+            if (verification === 1){
+                res.status(500).send({
+                    message: error.message || "Password incorreta"
+                });
+            }else if (verification === 2){
+                res.status(500).send({
+                    message: error.message || "Email incorreto"
+                });
+            }
             res.status(500).send({
                 message: error.message || "Ocorreu um erro ao tentar aceder aos dados do utilizador"
             });

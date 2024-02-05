@@ -1,5 +1,6 @@
 //importação da ligação à base de dados
 const sql = require('./conexao.db');
+const bcrypt = require('bcrypt');
 
 //definição da tabela na bd de forma abstrata
 const Login = function (data) {
@@ -9,14 +10,34 @@ const Login = function (data) {
 
 // Model Procurar Utilizador
 Login.findUser = (user, result) => {
-    sql.query('SELECT * FROM utilizadores WHERE email = ? AND password = ?', [user.body.email, user.body.password], (error, res) => {
+    sql.query('SELECT * FROM utilizadores WHERE email = ?', user.body.email, (error, res) => {
         if (error) {
             console.log("error: ", error);
             result(error, null);
             return;
         }
-
-        result(null, res);
+        if (res.length) {
+            const utilizador = res[0];
+            const senhaFornecida = user.body.password;
+            
+            bcrypt.compare(senhaFornecida, utilizador.password, (err, bcryptResult) => {
+                if (err) {
+                    console.log('error');
+                    // Lidar com erros na comparação
+                    result(err, null);
+                } else if (bcryptResult) {
+                    // Password correta, retorna o utilizador encontrado
+                    result(null, res);
+                } else {
+                    // Password incorreta
+                    verification = 1;
+                    result(verification, null);
+                }
+            });
+        } else {
+            verification = 2;
+            result(verification, null);
+        }
     });
 };
 module.exports = Login;
