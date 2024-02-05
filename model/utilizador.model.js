@@ -47,9 +47,9 @@ Utilizador.FindById = (id, result) => {
         }
         
         if (res.length > 0) {
-            // Manipule os dados conforme necessário
+            //Alterar formato da data para YYYY/MM/DD
             res[0].data = new Date(res[0].data).toLocaleDateString('pt-PT');
-            result(null, res); // Envie a resposta alterada
+            result(null, res);
         } else {
             result("Utilizador não encontrado", null);
         }
