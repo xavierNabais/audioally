@@ -1,142 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt">
  <head>
-  <meta charset="utf-8">
+
   <title>AudioAlly</title>
-  <%- include('../partials/header');-%>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="../../assets/css/estilos_menu.css">
+  <link href='https://fonts.googleapis.com/css?family=Jockey One' rel='stylesheet'>
+
+  <style>
+    ::-webkit-calendar-picker-indicator {
+     filter: invert(1);
+ }
+ </style>
+
   </head>
   <body>
 
 
-  </body>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <section>
 
-  <div class="wrapper">
+      <div class="signin"> 
+   
+   
+       <div class="content"> 
+   
+        <h2>Register</h2> 
+   
+        <h3>Please fill all information</h3>
+        <form action="" name="registration" method="POST">
 
+        <div class="form"> 
+   
+         <div class="inputBox"> 
+   
+          <input type="text" name="nome" required maxlength="64"> <i>Full Name</i> 
+   
+         </div> 
+   
+         <div class="inputBox"> 
+   
+          <input type="text" name="username" required maxlength="32"> <i>Username</i> 
+   
+         </div> 
+   
+         <div class="inputBox"> 
+   
+            <input type="email" name="email" required maxlength="100"> <i>Email</i> 
+     
+           </div> 
+   
+           <div class="inputBox" style="display: flex;"> 
+   
+            <input type="date" name="data" required maxlength="64" > <i>Birth Date</i> 
+            
+           </div> 
+   
+           <div class="inputBox"> 
+   
+            <input type="text" name="sexo" required maxlength="64"> <i>Genre</i> 
+     
+           </div> 
+   
+           <div class="inputBox"> 
+   
+            <input type="password" name="password" maxlength="64" required> <i>Password</i> 
+     
+           </div> 
+           <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+            <label for="defaultCheck1" style="color: white;">I read and accept the <a href="#">Therms of use</a></label>
+          </div>
+         <div class="inputBox"> 
+   
+          <input type="submit" value="Register"> 
+   
+         </div> 
+         
+         <h3>Already have an account? <a href="/login">Login here</a></h3>
+   
+        </div> 
+      </form>
 
+       </div> 
+   
+      </div> 
+   
+     </section>
 
-
-
-
-
-    <div class="container" style="background-color: transparent; box-shadow: none;">
-      <div style="text-align: center; margin-top:10%; margin-bottom: 5%;">
-      </div>
-      <div >
-      </div>
-      <div class="row">
-         <div class="col-md-5 mx-auto" style="margin-left: 25%!important;">
-            <div id="first">
-               <div class="myform form " style="padding:20%;width: 600px;">
-                <div style="text-align: center; margin-bottom: 10%;">
-                  <h2> Criar conta</h2>
-                  </div>
-                     <div class="logo mb-3">
-                     </div>
-                        <form action="" name="registration" method="POST">
-                           <!-- nome completo -->
-                             <div class="form-group input-group">
-                               <input name="nome" class="form-control" placeholder="Nome Completo" type="text" name="nome" maxlength="64" required>
-                             </div>
-
-                             <!-- username -->
-                              <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                              <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">@</div>
-                                </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="32" name="username" required>
-                              </div>
-
-                             <!-- email -->
-                             <div class="form-group input-group">
-                               <input name="email" class="form-control" placeholder="E-mail" type="email" maxlength="100" required>
-                             </div>
-
-                             <!-- dta nascimento-->
-                           <div class="form-group">
-                             <div class="input-group date">
-                               <input class="form-control" placeholder="Data de nascimento" type="text" name="data" required>
-                               <span class="input-group-append">
-                               <button class="btn btn-outline-secondary" type="button">
-                                 <i class="fa fa-calendar"></i>
-                               </button></span>
-                             </div>
-                           </div>
-
-                             <!-- sexo -->
-                             <div class="form-group input-group">
-                               <select class="custom-select" name="sexo">
-                                 <option selected disabled="" >Sexo/Género</option>
-                                 <option value="Masculino">Masculino</option>
-                                 <option value="Feminino">Feminino</option>
-                               </select>
-                             </div>
-
-                             <!-- password -->
-                             <div class="form-group input-group">
-                               <input class="form-control" placeholder="Nova password" type="password" maxlength="64" name="password" required>
-                             </div>
-
-                             <!-- termos de uso -->
-                             <div class="form-check">
-                               <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
-                               <label class="form-check-label" for="defaultCheck1">Li e aceito os <a href="#">Termos de Uso</a>.</label>
-                             </div>
-
-                             <!-- criar conta -->                                      
-                             <div class="form-group">
-                               <button type="submit" class="btn btn-primary btn-block"> Sign-Up </button>
-                             </div>
-
-                             <!-- log in -->      
-                             <p class="text-center">Já tens conta no AudioAlly? Faz <a href="/">log in</a>.</p>                                                                 
-                        </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-  $(document).ready(function() {
-     $(".menu-icon").on("click", function() {
-           $("nav ul").toggleClass("showing");
-     });
-});
-
-// Scrolling Effect
-
-$(window).on("scroll", function() {
-     if($(window).scrollTop()) {
-           $('nav').addClass('black');
-     }
-
-     else {
-           $('nav').removeClass('black');
-     }
-})
-
-$(function () {
-        $(".date").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        });
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
-      
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 </body>
 

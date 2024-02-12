@@ -7,9 +7,13 @@
     const MarcacoesController = require("../controller/marcacoes.controller");
 
 
+    //Rota Visualização Página Home
+    router.get("/", async function(req,res){
+        res.render(path.resolve('views/pages/index.ejs'));  
+    });
 
     //Rota Visualização Página Login Frontend
-    router.get("/", async function(req,res){
+    router.get("/login", async function(req,res){
         res.render(path.resolve('views/pages/login.ejs'));  
     });
 
@@ -31,7 +35,7 @@
     router.get("/cliente/formulario/:id", clienteController.findAll);
 
     //Rota Verificação Login Cliente Backend
-    router.post("/", loginController.getUser);
+    router.post("/login", loginController.getUser);
 
     //Rota Registo Utilizador Backend
     router.post("/register", registoController.create);
