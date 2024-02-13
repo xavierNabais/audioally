@@ -4,13 +4,10 @@
     const loginController = require("../controller/login.controller");
     const registoController = require("../controller/registo.controller");
     const clienteController = require("../controller/cliente.controller");
-    const MarcacoesController = require("../controller/marcacoes.controller");
-
+    const produtoresController = require("../controller/produtor.controller");
 
     //Rota Visualização Página Home
-    router.get("/", async function(req,res){
-        res.render(path.resolve('views/pages/index.ejs'));  
-    });
+    router.get("/", produtoresController.findProds);
 
     //Rota Formulário Marcação Cliente Frontend
     router.get("/request/:id", clienteController.findAll2);

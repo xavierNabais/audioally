@@ -7,6 +7,7 @@ const Produtores = function (data) {
     this.nome = data.nome,
     this.nif = data.nif,
     this.especializacao = data.especializacao,
+    this.descricao = data.descricao,
     this.ativo = data.ativo
 } 
 
@@ -81,7 +82,7 @@ Produtores.create = (novoProdutor, result) => {
 
 //Model Atualizar Produtor
 Produtores.update = (dados, result) => {
-    sql.query('UPDATE produtores SET  nome=?, nif=?, especializacao=?, ativo=? WHERE id=?', [dados.nome, dados.nif, dados.especializacao, dados.ativo, dados.id], (error,res) => {
+    sql.query('UPDATE produtores SET  nome=?, nif=?, especializacao=?,descricao=?, ativo=? WHERE id=?', [dados.nome, dados.nif, dados.especializacao,dados.descricao, dados.ativo, dados.id], (error,res) => {
         if (error) {
             console.log("error: ", error);
             result(null, error);

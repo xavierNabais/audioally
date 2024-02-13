@@ -32,6 +32,7 @@
             <th>Nome</th>
             <th>NIF</th>
             <th>Especialização</th>
+            <th>Descrição</th>
             <th>Ativo</th>
             <th class="text-center">Ações</th>
         </tr>
@@ -42,6 +43,7 @@
                 <td><%= dados.nome%></td>
                 <td><%= dados.nif%></td>
                 <td><%= dados.especializacao%></td>
+                <td><%= dados.descricao%></td>
                 <td><%= dados.ativo%></td>
                 <td class="text-center" style="width:20%"><a class='btn btn-info btn-xs' href="/produtor/<%= dados.id %>/update"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="/produtor/<%= dados.id %>/apagar" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
             </tr>

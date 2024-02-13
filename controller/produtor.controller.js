@@ -14,6 +14,19 @@ exports.findAll = (req, res) => {
     });
 };
 
+//Controller Procurar Produtores Para Index
+exports.findProds = (req, res) => {
+    ProdutorModel.getAll((error, dados) => {
+        if (error)
+        res.status(500).send({
+            message:
+            error.message || "Ocorreu um erro ao tentar aceder aos dados dos produtores"
+        });
+        else res.render(path.resolve('views/pages/index.ejs'), { dados });   
+
+    });
+};
+
 //Controller Criar Novo Produtor
 exports.create = (req, res) => {
 
@@ -27,6 +40,7 @@ exports.create = (req, res) => {
         nome: req.body.nome,
         nif: req.body.nif,
         especializacao: req.body.especializacao,
+        descricao: req.body.descricao,
         ativo: req.body.ativo
 
     });
