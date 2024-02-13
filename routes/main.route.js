@@ -12,6 +12,12 @@
         res.render(path.resolve('views/pages/index.ejs'));  
     });
 
+    //Rota Formulário Marcação Cliente Frontend
+    router.get("/request/:id", clienteController.findAll2);
+
+    //Rota Criação Marcação Cliente Backend
+    router.post("/request/:id", clienteController.create);
+
     //Rota Visualização Página Login Frontend
     router.get("/login", async function(req,res){
         res.render(path.resolve('views/pages/login.ejs'));  
@@ -38,7 +44,7 @@
     router.post("/login", loginController.getUser);
 
     //Rota Registo Utilizador Backend
-    router.post("/register", registoController.create);
+    router.post("/register", registoController.create); 
 
     //Rota Criação Marcação Cliente Backend
     router.post("/cliente/formulario/:id", clienteController.create);

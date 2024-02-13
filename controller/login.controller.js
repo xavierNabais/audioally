@@ -25,7 +25,7 @@ exports.getUser = (req, res) => {
                 if (dados[0].admin === 1){
                 res.redirect('/utilizadores');
                 } else{
-                    res.redirect('/cliente/marcacoes/'+dados[0].id);
+                    res.redirect('/request/'+dados[0].id);
                 }
                 }
             else{

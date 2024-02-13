@@ -2,12 +2,38 @@ const ProdutorModel = require("../model/produtor.model");
 const MarcacoesModel = require("../model/marcacoes.model");
 const ServicoModel = require("../model/servico.model");
 const ClienteModel = require("../model/cliente.model");
-
+const UtilizadorModel = require("../model/utilizador.model");
 var path = require('path');
 
 //Controller Procurar Produtores e Serviços Disponíveis
 exports.findAll = (req, res) => {
     const id = req.params.id;
+            ProdutorModel.getActive((error, produtor) => {
+                if (error) {
+                    res.status(500).send({
+                        message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos produtores"
+                    });
+                } else {
+                    ServicoModel.getActive((error, servico) => {
+                        if (error) {
+                            res.status(500).send({
+                                message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos servicos"
+                            });
+                        } else {
+                            res.render(path.resolve('views/pages/clientes/index.ejs'), { produtor, servico, id });  
+                        }
+                    });
+                }
+            });
+}
+exports.findAll2 = (req, res) => {
+    const id = req.params.id;
+    UtilizadorModel.FindById(id, (error, utilizador) => {
+        if (error) {
+            res.status(500).send({
+                message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos clientes"
+            });
+        } else{
             ProdutorModel.getActive((error, produtor) => {
                 if (error) {
                     res.status(500).send({
@@ -19,14 +45,26 @@ exports.findAll = (req, res) => {
                             res.status(500).send({
                                 message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos clientes"
                             });
-                        } else {
-                            res.render(path.resolve('views/pages/clientes/index.ejs'), { produtor, servico, id });  
+                        } else{
+                            ClienteModel.getAll(id, (error, dados) => {
+                                if (error) {
+                                    res.status(500).send({
+                                        message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos clientes"
+                                    });
+                                } else{
+                                    res.render(path.resolve('views/pages/request.ejs'), { produtor, servico, id, utilizador, dados });  
+                                }
+                            });
+
+                            
                         }
                     });
                 }
-            });
-}
+            });        
+        }
+    })
 
+}
 //Controller Procurar Produtores e Serviços Disponíveis
 exports.getMarcacoesOfClient = (req, res) => {
     const id = req.params.id;
@@ -66,7 +104,7 @@ exports.create = (req, res) => {
                     message:
                     error.message || "Ocorreu um erro ao tentar criar um novo cliente."
                 });
-                else res.redirect('/cliente/sucesso/' + req.params.id);
+                else res.redirect('/request/' + req.params.id);
             });
 };
 

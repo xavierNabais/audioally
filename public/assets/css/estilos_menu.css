@@ -9,6 +9,7 @@
 }
 html{
   background-color: black;
+  padding-bottom: 15%;
 }
 h2{
   color:white;
@@ -23,6 +24,13 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: white;
+}
+table{
+  margin: auto;
+  padding: 20px;
+}
+td{
+  padding: 0 250px;
 }
 .down-arrow {
   position: absolute;
@@ -244,6 +252,56 @@ input[type="submit"]:active
   margin: auto;
 }
 
+select {
+  /* Reset Select */
+  appearance: none;
+  border:0;
+  border-bottom: 1px solid white;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: black;
+  background-image: none;
+  cursor: pointer;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+  
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e00;
+  color: white;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: white;
+}
+:root {
+  --background-gradient: linear-gradient(178deg, #ffff33 10%, #3f3f3f);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
 #title {
 	top: 1265px;
 	left: 609px;
@@ -258,7 +316,20 @@ input[type="submit"]:active
   margin: auto;
   margin-top: 15%;
 }
-
+#title2 {
+	top: 1265px;
+	left: 609px;
+	width: 696px;
+	height: 81.8px;
+	overflow: hidden;
+	font-family: Jockey One;
+	font-size: 24px;
+	text-align: center;
+	letter-spacing: 12px;
+	color:#FFFFFF;
+  margin: auto;
+  margin-top: 10%;
+}
 #desc {
 	top: 1438px;
 	left: 444px;
@@ -272,7 +343,46 @@ input[type="submit"]:active
   margin: auto;
   margin-top: 5%;
 }
-
+#desc2 {
+	top: 1438px;
+	left: 444px;
+  width: 60%;
+	overflow: hidden;
+	font-family: Jockey One;
+	font-size: 18px;
+	text-align: center;
+	letter-spacing: 6px;
+	color:#8f8f8f;
+  margin: auto;
+  margin-bottom: 5%;
+}
+.requestButton input{
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+  border-bottom: 1px solid white;
+  width: 300px;
+}
+.requestSubmit input{
+  margin-top: 5%;
+  margin-bottom: 10%;
+  padding: 10px 40px 10px 40px;
+  background: white;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.requestTitle{
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
 /* Float four columns side by side */
 .column {
   float: left;
@@ -325,7 +435,8 @@ code {
   user-select:none;
   max-width: 300px;
   margin: 5rem auto;
-  margin-left: 5%;
+  margin-left: 3%;
+  margin-right: 3%;
   border: 1px solid #ffffff22;
   background-color: #282c34;
   background: linear-gradient(0deg, rgb(22, 22, 22) 0%, rgba(56, 56, 56, 0.5) 100%);
@@ -380,7 +491,10 @@ code {
     }
   }
 }
-
+.cardActive {
+  background-color: lightblue;
+  /* Adicione quaisquer outros estilos que desejar para um card ativo */
+}
 .bg{
   position: fixed;
   top: 50%;
@@ -444,7 +558,60 @@ button {
   border-bottom-right-radius: var(--radius);
 }
 
+.button-6 {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: 20px;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
 
+.button-6:hover,
+.button-6:focus {
+  box-shadow: rgba(255, 255, 255, 0.1) 0 4px 12px;
+  background-color: white;
+  color: black;
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+
+.button-6active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 1);
+  transform: translateY(0);
+}
+.form_inputs {
+  padding: 16px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+}
 
 
 @media (max-width: 900px)

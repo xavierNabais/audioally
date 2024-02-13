@@ -66,7 +66,7 @@ exports.create = (req, res) => {
                         error.message || "Ocorreu um erro ao tentar criar um utilizador."
                     });
                     else 
-                    res.redirect('/cliente/formulario/'+data.insertId); 
+                    res.redirect('/request/'+data.insertId); 
                 
                 });
         });
