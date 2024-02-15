@@ -52,7 +52,7 @@ exports.findAll2 = (req, res) => {
                                         message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos clientes"
                                     });
                                 } else{
-                                    res.render(path.resolve('views/pages/request.ejs'), { produtor, servico, id, utilizador, dados });  
+                                    res.render(path.resolve('views/pages/clientes/request.ejs'), { produtor, servico, id, utilizador, dados });  
                                 }
                             });
 
@@ -104,7 +104,7 @@ exports.create = (req, res) => {
                     message:
                     error.message || "Ocorreu um erro ao tentar criar um novo cliente."
                 });
-                else res.redirect('/request/' + req.params.id);
+                else res.redirect('' + req.params.id);
             });
 };
 

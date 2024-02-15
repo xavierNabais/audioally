@@ -20,18 +20,16 @@
   </head>
   <body>
 
-    <div id="logo" style="width: 100%; color: white;position: absolute;width: 100vw;height: 100vh; padding-left: 50px;padding-top: 50px;"><h1>AudioAlly</h1></div>
+    <div id="logo"><h1>AudioAlly</h1></div>
 
     <section>
 
-      <div class="signin"> 
+      <div class="signin" style="padding-bottom: 3%;"> 
    
    
        <div class="content"> 
-   
-        <h2>Register</h2> 
-   
-        <h3>Please fill all information</h3>
+      
+        <h2>REGISTER</h2>
         <form action="" name="registration" method="POST">
 
         <div class="form"> 
@@ -62,8 +60,14 @@
    
            <div class="inputBox"> 
    
-            <input type="text" name="sexo" required maxlength="64"> <i>Genre</i> 
-     
+          <!--<input type="text" name="sexo" required maxlength="64"> <i>Genre</i>  -->
+          <i>Genre</i>
+          <br>
+            <select style="width: 100%;background:none" class="select" name="servico" id="servico" form="criarMarcacao" required>
+              <option value="Escolha um servico" disabled selected>Choose your genre:</option>
+                  <option value="Male" name="servico">Male</option>
+                  <option value="Female" name="servico">Female</option>
+            </select>
            </div> 
    
            <div class="inputBox"> 

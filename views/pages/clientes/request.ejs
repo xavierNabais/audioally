@@ -10,12 +10,14 @@
 
   <link rel="stylesheet" type="text/css" href="../../assets/css/estilos_menu.css">
   <link href='https://fonts.googleapis.com/css?family=Jockey One' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="../../assets/images/logo_icon.ico">
 
  </head> 
 
  <body>
+   <div id="logo"><h1>AudioAlly</h1></div>
 
-<div id="main" style="padding: 10%";>
+<div id="main" style="padding: 10% 10% 0 10%";>
 
    <div nameid="WELCOME TO"  id="welcome_to" >
       WELCOME
@@ -31,9 +33,11 @@
   </div>
 </div>
 
+<div  id="title2">
+   DO YOU WANT TO SEE YOUR CURRENT REQUEST OR SUBMIT A NEW ONE?
+</div>
 
-
-   <div  nameid="WHAT WE DO?"  id="title" style="margin-top: 0%;">
+   <div  nameid="WHAT WE DO?"  id="title" style="margin-top:5%">
       <button id="buttonList" class="button-6" role="button" style="margin-right: 10%;" onclick="viewList()">VIEW LISTING</button><button class="button-6" id="buttonRequest" role="button" onclick="newReq()">NEW REQUEST</button>
    </div>
 
@@ -48,9 +52,9 @@
       </div>
    <% dados.forEach((dados) => { %>
 
-   <div class="card" onclick="selectCard('<%=produtor.id%>', this)">
+   <div class="card">
       <div class='main'>
-      <img class='tokenImage' src="../assets/images/benji.png" />
+      <img class='tokenImage' src="../assets/images/<%=dados.id_produtor%>.png" />
       <h2><%= dados.id_produtor %></h2>
       <p class='description'>Service: <%= dados.id_servico %>
       <p class='description'>BPMS: <%= dados.bpms %>
@@ -81,10 +85,10 @@
 
                <div class="card" onclick="selectCard('<%=produtor.id%>', this)">
                   <div class='main'>
-                  <img class='tokenImage' src="../assets/images/benji.png" />
+                  <img class='tokenImage' src="../assets/images/<%=produtor.nome%>.png" />
                   <h2><%= produtor.nome %></h2>
-                  <p class='description'>João Maia Ferreira, também conhecido pelo nome artístico Benji Price, é um rapper e produtor de hip-hop português.
-                     <p class='skills'>Beat Making, Mix&Master, Voice AutoTune
+                  <p class='description'><%=produtor.descricao%>
+                     <p class='skills'><%=produtor.especializacao%>
                   </div>
                </div>
 

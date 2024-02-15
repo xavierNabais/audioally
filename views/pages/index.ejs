@@ -17,9 +17,9 @@
 </head>
   <body>
 
-   <div id="logo" style="width: 100%; color: white;position: absolute;height: 100vh; padding-left: 50px;padding-top: 50px;"><h1>AudioAlly</h1></div>
+   <div id="logo"><h1>AudioAlly</h1></div>
 
-    <div id="main" style="padding: 10%";>
+    <div id="main" style="padding: 10%;";>
 
         <div nameid="WELCOME TO"  id="welcome_to" >
            WELCOME TO
@@ -30,10 +30,7 @@
         <div class="buttons-container" style="text-align: center;">
          <button class="button-arounder"><a href="login" style="color: white;">♬ REQUEST ♬</a></button>
         </div>
-        <div style="text-align: center; margin-top: 5%;margin-bottom: 30%;">
-            <div class="down-arrow"></div>
-        </div>
-     
+         <div class="down-arrow"></div> 
      </div>
      
      
@@ -54,7 +51,7 @@
         <% dados.forEach((dados) => { %>
         <div class="card">
            <div class='main'>
-             <img class='tokenImage' src="./assets/images/benji.png" />
+             <img class='tokenImage' src="./assets/images/<%=dados.nome%>.png" />
              <h2><%= dados.nome %></h2>
              <p class='description'><%= dados.descricao %>
               <p class='skills'><%= dados.especializacao %>
@@ -66,7 +63,7 @@
         <div  nameid="WHAT WE DO?"  id="title" style="margin-top: 5%;" >
            NEED A SERVICE?
         </div>
-        <div id="desc" style="margin-bottom: 5%;">
+        <div id="desc">
            FILL OUR FORM AND GET YOUR JOB DONE
            <br>
            <div class="buttons-container">
