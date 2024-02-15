@@ -8,4 +8,7 @@ Comprehensive documentation has been created for the backend operations, detaili
 
 I hope this revised description accurately captures the essence of your Node.js project. If you have any further adjustments or need additional information, feel free to let me know!
 
-![Screenshot_3](https://github.com/xavierNabais/audioally/assets/137562900/ea663984-8590-4005-b816-07f6443e0d97)
+Demonstration Video
+
+https://github.com/xavierNabais/audioally/assets/137562900/c20235a7-6293-4343-852e-cf53bbbbb04c
+
