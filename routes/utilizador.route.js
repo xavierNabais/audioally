@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const UtilizadorController = require("../controller/utilizador.controller");
+const isAdmin = require("../middleware/isAdmin.middleware");
 var path = require('path');
 
 
 //Rota Listagem Utilizadores Frontend
-router.get("/utilizadores", UtilizadorController.findAll);
+router.get("/utilizadores", isAdmin, UtilizadorController.findAll);
 
 //Rota Formulário Criação Utilizador Frontend
 router.get("/utilizadores/novo", function(req,res){

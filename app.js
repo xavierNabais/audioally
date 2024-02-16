@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const path = require('path');
 const cors = require("cors");
@@ -10,9 +11,14 @@ app.listen(app.get('port'), () => {
 console.log('Servidor iniciado na porta: '+ app.get('port'));
 });
 app.use(express.static(path.join(__dirname, '/public')));
-
-
 app.use(cors());
+
+
+app.use(session({
+    secret: 'v19bnqYOC8',
+    resave: false,
+    saveUninitialized: true
+  }));
 
 
 //Definir Rotas Principais

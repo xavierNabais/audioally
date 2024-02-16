@@ -20,6 +20,17 @@
         res.render(path.resolve('views/pages/login.ejs'));  
     });
 
+    //Rota Logout
+    router.get('/logout', (req, res) => {
+        req.session.destroy((err) => {
+          if (err) {
+            res.status(500).send('Erro ao fazer logout');
+          } else {
+            res.redirect('/login');
+          }
+        });
+      });
+
     //Rota Visualização Página Registo Frontend
     router.get("/register", async function(req,res){
         res.render(path.resolve('views/pages/register.ejs'));  

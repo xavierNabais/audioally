@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const MarcacoesController = require("../controller/marcacoes.controller");
+const isAdmin = require("../middleware/isAdmin.middleware");
 var path = require('path');
 
 
 //Rota Visualização Marcações Frontend
-router.get("/marcacoes", MarcacoesController.findAll);
+router.get("/marcacoes",isAdmin, MarcacoesController.findAll);
 
 //Rota Formulário Criação Marcações Frontend
-router.get("/marcacoes/novo", MarcacoesController.getActive);
+router.get("/marcacoes/novo",isAdmin, MarcacoesController.getActive);
 
 //Rota Atualização Marcação Frontend
 router.get("/marcacoes/:id/update", (req, res) => {
@@ -17,13 +18,13 @@ router.get("/marcacoes/:id/update", (req, res) => {
 });
 
 //Rota Criação Marcação Backend
-router.post("/marcacoes/novo", MarcacoesController.create);
+router.post("/marcacoes/novo",isAdmin, MarcacoesController.create);
 
 //Rota Atualização Marcação Backend
-router.post("/marcacoes/:id/update", MarcacoesController.update);
+router.post("/marcacoes/:id/update",isAdmin, MarcacoesController.update);
 
 //Rota Eliminação Marcação Backend
-router.get("/marcacoes/:id/apagar", MarcacoesController.remove);
+router.get("/marcacoes/:id/apagar",isAdmin, MarcacoesController.remove);
 
 
 module.exports = router;
