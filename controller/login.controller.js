@@ -1,8 +1,5 @@
 const LoginModel = require("../model/login.model");
 
-var path = require('path');
-
-
 
 //Controller Verificação Login
 exports.getUser = (req, res) => {

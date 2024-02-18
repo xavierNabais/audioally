@@ -42,7 +42,7 @@ exports.create = (req, res) => {
             res.status(500).send({
                 message:
                 error.message || "Username existente!"
-            });          
+            });
             //2 = Email existente
             } else if(error === 2) {
                 res.status(500).send({

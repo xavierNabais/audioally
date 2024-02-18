@@ -35,7 +35,20 @@ Produtores.getActive = result => {
     });
 };
 
-//Model Procurar Nome PÇrodutor Consoante ID
+//Model Procurar Nifs Existentes
+Produtores.getNif = (produtor, result) => {
+    sql.query('SELECT nif FROM produtores WHERE nif=? LIMIT 1', [produtor.nif], (error, res) => {
+        console.log(produtor.nif);
+        if (error) {
+            console.log("error: ", error);
+            result(null, error);
+            return;
+        }
+        result(null,res);
+    });
+};
+
+//Model Procurar Nome Produtor Consoante ID
 Produtores.getNomeById = (id, callback) => {
     sql.query('SELECT nome FROM produtores WHERE ID=?', [id], (error, res) => {
         if (typeof callback !== 'function') {

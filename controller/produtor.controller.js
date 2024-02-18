@@ -31,7 +31,7 @@ exports.findProds = (req, res) => {
 exports.create = (req, res) => {
 
     if(!req.body){
-        res.status(400).send({
+        return res.status(400).send({
             message: "O conteúdo não pode estar vazio!"
         });
     }
@@ -42,25 +42,39 @@ exports.create = (req, res) => {
         especializacao: req.body.especializacao,
         descricao: req.body.descricao,
         ativo: req.body.ativo
-
     });
-    ProdutorModel.create(produtor, (error, data) => {
-        if (error)
-        res.status(500).send({
-            message:
-            error.message || "Ocorreu um erro ao tentar criar um produtor."
-        });
-        else
-        ProdutorModel.getAll((error, dados) => {
-            if (error)
-            res.status(500).send({
-                message:
-                error.message || "Ocorreu um erro ao tentar aceder aos dados dos produtores"
+
+    ProdutorModel.getNif(produtor, (error, data) => {
+        if (error) {
+            return res.status(500).send({
+                message: error.message || "Ocorreu um erro ao tentar criar um produtor."
             });
-            else res.render(path.resolve('views/pages/produtores/index.ejs'), { dados });   
-        });
+        } else if (data.length > 0) {
+            return res.status(400).send({
+                message: "O NIF já está em uso."
+            });
+        } else {
+            ProdutorModel.create(produtor, (error, data) => {
+                if (error) {
+                    return res.status(500).send({
+                        message: error.message || "Ocorreu um erro ao tentar criar um produtor."
+                    });
+                } else {
+                    ProdutorModel.getAll((error, dados) => {
+                        if (error) {
+                            return res.status(500).send({
+                                message: error.message || "Ocorreu um erro ao tentar aceder aos dados dos produtores"
+                            });
+                        } else {
+                            res.render(path.resolve('views/pages/produtores/index.ejs'), { dados });
+                        }
+                    });
+                }
+            });
+        }
     });
 };
+
 
 //Controller Atualizar Produtor
 exports.update = (req, res) => {
