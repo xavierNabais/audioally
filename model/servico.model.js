@@ -32,6 +32,18 @@ Servico.getActive = result => {
     });
 };
 
+//Model Procurar Serviço Existente
+Servico.findBody = (nome, result) => {
+    sql.query('SELECT * FROM servicos WHERE nome=?', [nome], (error,res) => {
+        if (error) {
+            console.log("error: ", error);
+            result(null, error);
+            return;
+        }
+        result(null,res);
+    });
+}
+
 //Model Procurar Serviço Consoante ID
 Servico.FindById = (id, result) => {
     sql.query('SELECT * FROM servicos WHERE ID=?', [id], (error,res) => {

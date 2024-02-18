@@ -30,25 +30,25 @@
 <form method="POST"  name="updateUser" id="updateUser">
     <div class="form-group">
         <label for="exampleInputEmail1">ID</label>
-        <input type="number" class="form-control" placeholder="Insira o username" maxlength="24" name="id" required value="<%= dados[0].id %>" readonly>
+        <input type="number" class="form-control" maxlength="24" name="id" required value="<%= dados[0].id %>" readonly>
       </div>    
     <div class="form-group">
       <label for="exampleInputEmail1">Username</label>
-      <input type="text" class="form-control" placeholder="Insira o username" maxlength="24" name="username" required value="<%= dados[0].username %>">
+      <input type="text" class="form-control"maxlength="24" name="username" required value="<%= dados[0].username %>">
     </div>      
     <div class="form-group">
       <label for="exampleInputPassword1">Nome</label>
-      <input type="text" class="form-control" placeholder="Insira o nome" maxlength="24" name="nome" required value="<%= dados[0].nome %>">
+      <input type="text" class="form-control" maxlength="24" name="nome" required value="<%= dados[0].nome %>">
     </div>
 
     <div class="form-group">
         <label for="exampleInputPassword1">Email</label>
-        <input type="email" class="form-control" id="exampleInputPassword1" maxlength="36" placeholder="email@email.com" name="email" required  value="<%= dados[0].email %>">
+        <input type="email" class="form-control" id="exampleInputPassword1" maxlength="36"name="email" required  value="<%= dados[0].email %>">
     </div>
 
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" placeholder="Insira a palavra-passe" maxlength="24" pattern=".{8,}" title="Insira no mínimo 8 dígitos" name="password" required value="<%= dados[0].password %>">
+        <input type="text" class="form-control" maxlength="80" pattern=".{8,}" name="password" required value="<%= dados[0].password %>">
     </div>
 
     <div class="form-group">

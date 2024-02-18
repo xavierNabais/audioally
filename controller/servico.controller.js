@@ -28,22 +28,34 @@ exports.create = (req, res) => {
         ativo: req.body.ativo,
     });
 
-    ServicoModel.create(servico, (error, data) => {
-        if (error)
-        res.status(500).send({
-            message:
-            error.message || "Ocorreu um erro ao tentar criar um serviço."
-        });
-        else
-        ServicoModel.getAll((error, dados) => {
+        ServicoModel.findBody(servico.nome, (error,data) => {
             if (error)
             res.status(500).send({
                 message:
-                error.message || "Ocorreu um erro ao tentar aceder aos dados dos serviços"
+                error.message || "Ocorreu um erro ao tentar criar um serviço."
             });
-            else res.render(path.resolve('views/pages/servicos/index.ejs'), { dados });   
+            else if (data.length > 0) {
+                return res.status(400).send({
+                    message: "O NIF já está em uso."
+                });
+            } else
+                            ServicoModel.create(servico, (error, data) => {
+                                if (error)
+                                res.status(500).send({
+                                    message:
+                                    error.message || "Ocorreu um erro ao tentar criar um serviço."
+                                });
+                                else
+                                ServicoModel.getAll((error, dados) => {
+                                    if (error)
+                                    res.status(500).send({
+                                        message:
+                                        error.message || "Ocorreu um erro ao tentar aceder aos dados dos serviços"
+                                    });
+                                    else res.render(path.resolve('views/pages/servicos/index.ejs'), { dados });   
+                                });
+                            });
         });
-    });
 };
 
 // Controller Atualizar Serviço 
